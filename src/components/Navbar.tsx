@@ -14,7 +14,24 @@ export default function Navbar() {
   return (
     <>
       <header className="nav">
-        <a href="#top" className="nav-logo">何昊</a>
+        {/* Left: logo + download */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 4 }}>
+          <a href="#top" className="nav-logo">何昊</a>
+          <a
+            href="/resume.pdf"
+            download
+            style={{
+              fontSize: "0.68rem",
+              color: "rgba(255,255,255,0.45)",
+              letterSpacing: "0.06em",
+              transition: "color 200ms",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
+          >
+            下载简历 ↓
+          </a>
+        </div>
 
         <nav className="nav-links">
           {links.map((l) => (
@@ -41,6 +58,21 @@ export default function Navbar() {
             {l.label}
           </a>
         ))}
+        <a
+          href="/resume.pdf"
+          download
+          onClick={() => setOpen(false)}
+          style={{
+            marginTop: 16,
+            fontSize: "0.85rem",
+            padding: "8px 20px",
+            border: "1px solid var(--accent)",
+            borderRadius: 999,
+            color: "var(--accent)",
+          }}
+        >
+          下载简历 PDF ↓
+        </a>
       </div>
     </>
   );
